@@ -32,7 +32,7 @@ STEP 1
 
 		You can define the fields that your template is expecting in curley braces:
 		
-		{header}
+		{header1}
 
 		You can also define groups of information that you are expecting to be replaced:
 	
@@ -40,6 +40,7 @@ STEP 1
 			{first_name} {last_name} {age}
 		{siblings:end}
 
+		{header2}
 		{pets:begin}
 			{name} {animal_type}
 		{pets:end}
@@ -55,14 +56,15 @@ STEP 2
 	$parser = new parser ; 
 
 	You can then define your array as follows:
-	$data['header'] 		= 'Example';
+	$data['header1'] 		= 'Example 1';
 	$data["siblings"][0] 	= array('first_name'=>"Jason","last_name"=>"Brown","age"=>20) ;	
 	$data["siblings"][1]	= array('first_name'=>"Karen","last_name"=>"Christy","age"=>21) ; 				
+	$data["header2"]		="Example 2";
 	$data["pets"][0]		= array("name"=>"Shaggy","animal_type"=>"dog"); 
 	$data["pets"][1]		= array("name"=>"Pretty","animal_type"=>"parrot");		
-	$group 					= array('siblings','pets');				
+		
 	
 	$template 				= 'templates/example.template.html' ;
-	$html 					= $parser->parse_file($template, NULL, $data, $group) ;	
+	$html 					= $parser->parse_file($template, NULL, $data) ;	
 
 	echo $html ;
